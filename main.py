@@ -13,7 +13,7 @@ def initGit():
     os.system(f"echo '# {project_name}' > README.md")
     os.system("git init && git add .")
     os.system("git commit -m \"initial commit\"")
-    print("Project successfully created!")
+    print("Git initialized with first commit")
 
 def createProject():
     print("[*] Creating project folder")
@@ -30,6 +30,7 @@ def createProject():
 if __name__ == '__main__':
     project_name = str(sys.argv[1])
     if(createProject()):
+        print("*** Project creation finished ***")
         sys.exit(0)
     else:
         print("Could not create project, as a repository with the same name already exists!")
