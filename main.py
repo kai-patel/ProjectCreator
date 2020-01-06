@@ -10,7 +10,7 @@ import sys
 
 def initGit():
     print("[*] Initializing git")
-    os.system(f"echo '# {project_name}' > README.md")
+    os.system(f"echo # {project_name} > README.md")
     os.system("git init && git add .")
     os.system("git commit -m \"initial commit\"")
     print("Git initialized with first commit")
