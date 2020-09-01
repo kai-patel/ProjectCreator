@@ -7,31 +7,37 @@ __email__ = "00kaipatel@gmail.com"
 
 import os
 import sys
+from selenium import webdriver
 
-def initGit():
-    print("[*] Initializing git")
-    os.system(f"echo # {project_name} > README.md")
-    os.system("git init && git add .")
-    os.system("git commit -m \"initial commit\"")
-    print("Git initialized with first commit")
+project_name = str(sys.argv[1])
 
-def createProject():
-    print("[*] Creating project folder")
-    os.chdir("C:/Users/patel/OneDrive/Development/myProjects")
-    if(os.system(f"mkdir {project_name}") == 0):
-        print("[*] Changing into project directory")
-        os.chdir(f"{project_name}")
-        initGit()
-        return True
-    else:
-        print("Could not create project folder!")
-        sys.exit(1)
+user_ = "00kaipatel@gmail.com"
+pass_ = str(sys.argv[2])
 
-if __name__ == '__main__':
-    project_name = str(sys.argv[1])
-    if(createProject()):
-        print("*** Project creation finished ***")
-        sys.exit(0)
-    else:
-        print("Could not create project, as a repository with the same name already exists!")
-        sys.exit(1)
+def main():
+    driver = webdriver.Chrome()
+    driver.get("http://www.github.com/login")
+
+    #sign_in = driver.find_element_by_xpath("/html/body/div[1]/header/div/div[2]/div[2]/a[1]")
+    #sign_in.submit()
+
+    username = driver.find_element_by_xpath("//*[@id='login_field']")
+    username.send_keys(user_)
+
+    password = driver.find_element_by_xpath("//*[@id='password']")
+    password.send_keys(pass_)
+
+    login_button = driver.find_element_by_xpath("//*[@id='login']/form/div[4]/input[9]")
+    login_button.submit()
+
+    driver.get("https://github.com/new")
+
+    repo_name = driver.find_element_by_xpath("//*[@id='repository_name']")
+    repo_name.send_keys(project_name)
+
+    create_repo_button = driver.find_element_by_xpath("//*[@id='new_repository']/div[4]/button")
+    create_repo_button.submit()
+    return 0
+
+if __name__ == "__main__":
+    main()
