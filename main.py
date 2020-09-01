@@ -11,8 +11,8 @@ from selenium import webdriver
 
 project_name = str(sys.argv[1])
 
-user_ = "00kaipatel@gmail.com"
-pass_ = str(sys.argv[2])
+user_ = str(sys.argv[2])
+pass_ = str(sys.argv[3])
 
 def main():
     driver = webdriver.Chrome()
