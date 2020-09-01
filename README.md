@@ -20,4 +20,4 @@ cd <your-projects-folder>
 git remote add origin "<your-account-link>/%1.git"
 ```
 
-where <your-account-link> looks like "https://github.com/<your-account>", and <your-projects-folder> is a Windows-style path to a directory.
+where \<your-account-link\>" looks like "https://github.com/your-account", and \<your-projects-folder\> is a Windows-style path to a directory.
